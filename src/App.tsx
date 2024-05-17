@@ -3,6 +3,7 @@ import * as S from "./Styles";
 
 // Components
 import Sidenav from "./components/Sidenav";
+import Header from "./components/Header";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <S.GlobalStyle />
       <S.Container>
         <Sidenav />
+        <Header />
       </S.Container>
     </>
   );

@@ -37,4 +37,9 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div`
   display: grid;
   grid-template-columns: 200px 1fr;
+  gap: var(--gap);
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
 `;

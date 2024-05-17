@@ -10,6 +10,10 @@ export const Container = styled.aside`
 export const List = styled.ul`
   display: grid;
   gap: var(--gap);
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 export const Icon = styled.img`
