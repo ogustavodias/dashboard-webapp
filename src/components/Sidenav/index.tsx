@@ -9,9 +9,13 @@ import configs from "../../assets/icons/configuracoes.svg";
 import contact from "../../assets/icons/contato.svg";
 import exit from "../../assets/icons/sair.svg";
 
+// Logo SRC
+import logo from "../../assets/fintech.svg";
+
 const Sidenav = () => {
   return (
     <S.Container>
+      <img src={logo} alt="Fintech logo" style={{marginBottom: "var(--gap)"}}/>
       <nav>
         <S.List>
           <li>
