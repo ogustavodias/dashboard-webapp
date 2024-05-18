@@ -4,6 +4,7 @@ import * as S from "./Styles";
 // Components
 import Sidenav from "./components/Sidenav";
 import Header from "./components/Header";
+import Sales from "./pages/Sales";
 
 function App() {
   return (
@@ -11,7 +12,10 @@ function App() {
       <S.GlobalStyle />
       <S.Container>
         <Sidenav />
-        <Header />
+        <main>
+          <Header />
+          <Sales />
+        </main>
       </S.Container>
     </>
   );
