@@ -4,11 +4,14 @@ import * as S from "./Styles";
 // Components
 import Sidenav from "./components/Sidenav";
 import Header from "./components/Header";
-import Sales from "./pages/Sales";
-import Sale from "./pages/Sales/Sale";
-import Resume from "./pages/Resume";
+
+// Routes
+import { RouterProvider } from "react-router-dom";
+import useRouter from "./Hooks/useRouter";
 
 function App() {
+  const routes = useRouter();
+
   return (
     <>
       <S.GlobalStyle />
@@ -16,7 +19,7 @@ function App() {
         <Sidenav />
         <main>
           <Header />
-          <Resume />
+          <RouterProvider router={routes} />
         </main>
       </S.Container>
     </>

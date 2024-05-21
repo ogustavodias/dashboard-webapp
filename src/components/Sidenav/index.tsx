@@ -15,17 +15,21 @@ import logo from "../../assets/fintech.svg";
 const Sidenav = () => {
   return (
     <S.Container>
-      <img src={logo} alt="Fintech logo" style={{marginBottom: "var(--gap)"}}/>
+      <img
+        src={logo}
+        alt="Fintech logo"
+        style={{ marginBottom: "var(--gap)" }}
+      />
       <nav>
         <S.List>
           <li>
-            <S.Link href="">
+            <S.Link href="/">
               <S.Icon src={resume} />
               Resumo
             </S.Link>
           </li>
           <li>
-            <S.Link href="">
+            <S.Link href="/vendas">
               <S.Icon src={sales} />
               Vendas
             </S.Link>
