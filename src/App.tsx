@@ -6,6 +6,7 @@ import Sidenav from "./components/Sidenav";
 import Header from "./components/Header";
 import Sales from "./pages/Sales";
 import Sale from "./pages/Sales/Sale";
+import Resume from "./pages/Resume";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Sidenav />
         <main>
           <Header />
-          <Sale />
+          <Resume />
         </main>
       </S.Container>
     </>
