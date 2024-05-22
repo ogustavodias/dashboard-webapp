@@ -7,13 +7,17 @@ import Header from "./components/Header";
 
 // Routes
 import { RouterProvider } from "react-router-dom";
-import useRouter from "./Hooks/useRouter";
+import useRouter from "./hooks/useRouter";
+
+// Global context
+
+import { GlobalContextProvider } from "./context/global";
 
 function App() {
   const routes = useRouter();
 
   return (
-    <>
+    <GlobalContextProvider>
       <S.GlobalStyle />
       <S.Container>
         <Sidenav />
@@ -22,7 +26,7 @@ function App() {
           <RouterProvider router={routes} />
         </main>
       </S.Container>
-    </>
+    </GlobalContextProvider>
   );
 }
 
