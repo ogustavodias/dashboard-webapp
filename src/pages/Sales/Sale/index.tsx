@@ -29,7 +29,6 @@ const Sale = () => {
   if (!data) return;
   if (data.error) return <Error message={data.error} />;
 
-  console.log(data);
   return (
     <S.List>
       <S.Item>ID: {data.id} </S.Item>
