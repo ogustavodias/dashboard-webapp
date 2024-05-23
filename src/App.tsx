@@ -9,8 +9,7 @@ import Header from "./components/Header";
 import { RouterProvider } from "react-router-dom";
 import useRouter from "./hooks/useRouter";
 
-// Global context
-
+// Global Context provider
 import { GlobalContextProvider } from "./context/global";
 
 function App() {

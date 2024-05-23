@@ -32,7 +32,7 @@ const Resume = () => {
           <span>R$ 40.656,00</span>
         </S.ResumeCard>
       </S.ResumeHeader>
-      <S.ResumeGraph>
+{/*       <S.ResumeGraph>
         <ResponsiveContainer width="99%" height={400}>
           <LineChart width={500} height={300} data={data}>
             <XAxis dataKey="name" />
@@ -43,7 +43,7 @@ const Resume = () => {
             <Line type="monotone" dataKey="falha" stroke="#cac582" />
           </LineChart>
         </ResponsiveContainer>
-      </S.ResumeGraph>
+      </S.ResumeGraph> */}
     </div>
   );
 };
