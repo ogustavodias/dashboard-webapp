@@ -17,7 +17,7 @@ export const ItemValue = styled.span`
   margin-left: auto;
 `;
 
-export const Item = styled.li`
+export const Item = styled.a`
   display: flex;
   gap: var(--gap);
   background-color: var(--color-5);

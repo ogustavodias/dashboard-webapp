@@ -2,7 +2,7 @@ import React, { PropsWithChildren, createContext } from "react";
 import useFetch from "../hooks/useFetch";
 import { getDate } from "../functions/date";
 
-interface ISale {
+export interface ISale {
   id: string;
   nome: string;
   preco: number;
@@ -13,7 +13,7 @@ interface ISale {
 }
 
 interface IContext {
-  data: ISale | null;
+  data: ISale[] | null;
   loading: boolean;
   error: string | null;
   start: string;
@@ -28,7 +28,7 @@ export const GlobalContextProvider = ({ children }: PropsWithChildren) => {
   const [start, setStart] = React.useState(getDate(1));
   const [end, setEnd] = React.useState(getDate(0));
 
-  const { data, loading, error } = useFetch<ISale>(
+  const { data, loading, error } = useFetch<ISale[]>(
     `https://data.origamid.dev/vendas/?inicio=${start}&final=${end}`
   );
 
