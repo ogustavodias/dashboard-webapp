@@ -11,3 +11,8 @@ export function getDate(timeBefore: number) {
   const previous = new Date(now.getFullYear(), beforeMonth, now.getDate());
   return formatDate(previous);
 }
+
+export function getMonthWord(value: Date) {
+  const month = value.toLocaleString("default", { month: "long" });
+  return month.charAt(0).toUpperCase() + month.slice(1);
+}
