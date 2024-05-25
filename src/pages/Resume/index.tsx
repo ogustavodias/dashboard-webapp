@@ -46,8 +46,6 @@ const Resume = () => {
     else return [{ name: "00-00", pago: 0, processando: 0, falha: 0 }];
   }
 
-  console.log(dataToGraph());
-
   if (loading) return <Loading />;
   if (error) return <Error message={error} />;
   if (!data) return;

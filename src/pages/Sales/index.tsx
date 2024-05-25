@@ -1,5 +1,6 @@
 // Styles
 import * as S from "./styles";
+import { Loading } from "../../components/Loading/styles";
 
 // Hooks
 import useGlobalContext from "../../hooks/useGlobalContext";
@@ -7,11 +8,16 @@ import useGlobalContext from "../../hooks/useGlobalContext";
 // Functions
 import { toCurrency } from "../../functions/currency";
 
+// Components
+import Error from "../../components/Error";
+
 const Sales = () => {
   const { data, loading, error } = useGlobalContext();
 
+  if (loading) return <Loading />;
+  if (error) return <Error message={error} />;
   if (!data) return;
-  
+
   return (
     <S.List>
       {data.map((item) => {
