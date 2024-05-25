@@ -3,6 +3,7 @@ import * as S from "./styles";
 
 // Recharts library
 import {
+  Legend,
   Line,
   LineChart,
   ResponsiveContainer,
@@ -31,24 +32,29 @@ interface IGraphData {
 const Resume = () => {
   const { data, loading, error } = useGlobalContext();
 
-  function getMonthAndDay(date: string) {
-    return date.split(" ")[0].substring(5);
+  function dataToGraph(): IGraphData[] {
+    const dataGraph = data?.reduce((previous, now) => {
+      const date = now.data.split(" ")[0].substring(5);
+      if (!previous[date])
+        previous[date] = { name: date, pago: 0, processando: 0, falha: 0 };
+
+      previous[date][now.status] += now.preco;
+      return previous;
+    }, {} as { [key: string]: IGraphData });
+
+    if (dataGraph) return Object.values(dataGraph);
+    else return [{ name: "00-00", pago: 0, processando: 0, falha: 0 }];
   }
 
-  const vendas = data?.filter(({ status }) => status !== "falha");
-  const recebido = vendas?.filter(({ status }) => status === "pago");
-  const processando = vendas?.filter(({ status }) => status === "processando");
+  console.log(dataToGraph());
 
-  /*   const data = [
-    { name: "05-07", pago: 30000, processando: 10000, falha: 20000 },
-    { name: "06-07", pago: 40000, processando: 5000, falha: 20000 },
-    { name: "07-07", pago: 50000, processando: 10000, falha: 40000 },
-    { name: "08-07", pago: 10000, processando: 20000, falha: 40000 },
-  ];
- */
   if (loading) return <Loading />;
   if (error) return <Error message={error} />;
   if (!data) return;
+
+  const sales = data.filter(({ status }) => status !== "falha");
+  const received = sales.filter(({ status }) => status === "pago");
+  const processing = sales.filter(({ status }) => status === "processando");
 
   return (
     <div>
@@ -56,36 +62,50 @@ const Resume = () => {
         <S.ResumeCard>
           <h2>Vendas</h2>
           <span>
-            {toCurrency(vendas?.reduce((acc, item) => item.preco + acc, 0))}
+            {toCurrency(sales?.reduce((acc, item) => item.preco + acc, 0))}
           </span>
         </S.ResumeCard>
         <S.ResumeCard>
           <h2>Recebido</h2>
           <span>
-            {toCurrency(recebido?.reduce((acc, item) => item.preco + acc, 0))}
+            {toCurrency(received?.reduce((acc, item) => item.preco + acc, 0))}
           </span>
         </S.ResumeCard>
         <S.ResumeCard>
           <h2>Processando</h2>
           <span>
-            {toCurrency(
-              processando?.reduce((acc, item) => item.preco + acc, 0)
-            )}
+            {toCurrency(processing?.reduce((acc, item) => item.preco + acc, 0))}
           </span>
         </S.ResumeCard>
       </S.ResumeHeader>
-      {/*       <S.ResumeGraph>
+      <S.ResumeGraph>
         <ResponsiveContainer width="99%" height={400}>
-          <LineChart width={500} height={300} data={data}>
+          <LineChart data={dataToGraph()}>
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Line type="monotone" dataKey="pago" stroke="#8884d8" />
-            <Line type="monotone" dataKey="processando" stroke="#82ca9d" />
-            <Line type="monotone" dataKey="falha" stroke="#cac582" />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="pago"
+              stroke="#8884d8"
+              strokeWidth={2}
+            />
+            <Line
+              type="monotone"
+              dataKey="processando"
+              stroke="#82ca9d"
+              strokeWidth={2}
+            />
+            <Line
+              type="monotone"
+              dataKey="falha"
+              stroke="#cac582"
+              strokeWidth={2}
+            />
           </LineChart>
         </ResponsiveContainer>
-      </S.ResumeGraph> */}
+      </S.ResumeGraph>
     </div>
   );
 };
