@@ -11,6 +11,9 @@ import { toCurrency } from "../../functions/currency";
 // Components
 import Error from "../../components/Error";
 
+// Types and Interfaces
+import { ISale } from "../../context/global";
+
 const Sales = () => {
   const { data, loading, error } = useGlobalContext();
 
@@ -20,7 +23,7 @@ const Sales = () => {
 
   return (
     <S.List>
-      {data.map((item) => {
+      {data.map((item: ISale) => {
         return (
           <li key={item.id}>
             <S.Item href={`/vendas/${item.id}`}>
