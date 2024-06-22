@@ -48,7 +48,7 @@ const Resume = () => {
 
         previous[date][now.status] += now.preco;
         return previous;
-      }, {} as { [key: string]: IGraphData });
+      }, {} as keyAndValue);
 
       return Object.values(dataGraph);
     }
