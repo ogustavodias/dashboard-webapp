@@ -33,17 +33,20 @@ const Resume = () => {
   const { data, loading, error } = useGlobalContext();
 
   function dataToGraph(): IGraphData[] {
-    const dataGraph = data?.reduce((previous, now) => {
-      const date = now.data.split(" ")[0].substring(5);
-      if (!previous[date])
-        previous[date] = { name: date, pago: 0, processando: 0, falha: 0 };
+    if (data) {
+      const dataGraph = data.reduce((previous, now) => {
+        const date = now.data.split(" ")[0].substring(5);
+        if (!previous[date])
+          previous[date] = { name: date, pago: 0, processando: 0, falha: 0 };
 
-      previous[date][now.status] += now.preco;
-      return previous;
-    }, {} as { [key: string]: IGraphData });
+        previous[date][now.status] += now.preco;
+        return previous;
+      }, {} as { [key: string]: IGraphData });
 
-    if (dataGraph) return Object.values(dataGraph);
-    else return [{ name: "00-00", pago: 0, processando: 0, falha: 0 }];
+      return Object.values(dataGraph);
+    }
+
+    return [{ name: "00-00", pago: 0, processando: 0, falha: 0 }];
   }
 
   if (loading) return <Loading />;
