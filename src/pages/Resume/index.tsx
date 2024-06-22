@@ -34,14 +34,17 @@ const Resume = () => {
 
   function dataToGraph(): IGraphData[] {
     if (data) {
-      const dataGraph = data.reduce((previous, now) => {
-        const date = now.data.split(" ")[0].substring(5);
-        if (!previous[date])
-          previous[date] = { name: date, pago: 0, processando: 0, falha: 0 };
+      const dataGraph = data.reduce(
+        (previous: { [key: string]: IGraphData }, now) => {
+          const date = now.data.split(" ")[0].substring(5);
+          if (!previous[date])
+            previous[date] = { name: date, pago: 0, processando: 0, falha: 0 };
 
-        previous[date][now.status] += now.preco;
-        return previous;
-      }, {} as { [key: string]: IGraphData });
+          previous[date][now.status] += now.preco;
+          return previous;
+        },
+        {} as { [key: string]: IGraphData }
+      );
 
       return Object.values(dataGraph);
     }
