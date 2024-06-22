@@ -32,4 +32,9 @@ export const Link = styled.a`
       background-color: transparent;
     }
   }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 `;

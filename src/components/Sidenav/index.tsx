@@ -35,25 +35,25 @@ const Sidenav = () => {
             </S.Link>
           </li>
           <li>
-            <S.Link href="">
+            <S.Link href="" className="disabled">
               <S.Icon src={webhooks} />
               Webhooks
             </S.Link>
           </li>
           <li>
-            <S.Link href="">
+            <S.Link href="" className="disabled">
               <S.Icon src={configs} />
               Configurações
             </S.Link>
           </li>
           <li>
-            <S.Link href="">
+            <S.Link href="" className="disabled">
               <S.Icon src={contact} />
               Contato
             </S.Link>
           </li>
           <li>
-            <S.Link href="">
+            <S.Link href="" className="disabled">
               <S.Icon src={exit} />
               Sair
             </S.Link>
