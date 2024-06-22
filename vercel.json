@@ -9,7 +9,7 @@
       "dest": "/"
     },
     {
-      "src": "/vendas/:id",
+      "src": "/vendas/(.*)",
       "dest": "/"
     }
   ]
