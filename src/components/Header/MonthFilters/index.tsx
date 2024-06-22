@@ -5,7 +5,7 @@ import * as S from "./styles";
 import { formatDate, getMonthWord } from "../../../functions/date";
 
 // Hooks
-import useGlobalContext from "../../../hooks/useGlobalContext";
+import useGlobalContext from "../../../Hooks/useGlobalContext";
 
 const MonthFilters = () => {
   const { data, setStart, setEnd } = useGlobalContext();

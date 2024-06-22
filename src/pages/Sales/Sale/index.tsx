@@ -2,7 +2,7 @@
 import * as S from "../styles";
 
 // Hooks
-import useFetch from "../../../hooks/useFetch";
+import useFetch from "../../../Hooks/useFetch";
 
 // React Router DOM
 import { useParams } from "react-router-dom";

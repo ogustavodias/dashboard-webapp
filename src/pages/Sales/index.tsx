@@ -3,7 +3,7 @@ import * as S from "./styles";
 import { Loading } from "../../components/Loading/styles";
 
 // Hooks
-import useGlobalContext from "../../hooks/useGlobalContext";
+import useGlobalContext from "../../Hooks/useGlobalContext";
 
 // Functions
 import { toCurrency } from "../../functions/currency";

@@ -7,7 +7,7 @@ import Input from "./Input";
 import MonthFilters from "./MonthFilters";
 
 // Hooks
-import useGlobalContext from "../../hooks/useGlobalContext";
+import useGlobalContext from "../../Hooks/useGlobalContext";
 
 const Header = () => {
   const { start, end, setStart, setEnd } = useGlobalContext();

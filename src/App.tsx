@@ -7,7 +7,7 @@ import Header from "./components/Header";
 
 // Routes
 import { RouterProvider } from "react-router-dom";
-import useRouter from "./hooks/useRouter";
+import useRouter from "./Hooks/useRouter";
 
 // Global Context provider
 import { GlobalContextProvider } from "./context/global";

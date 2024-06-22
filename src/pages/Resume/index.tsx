@@ -13,7 +13,7 @@ import {
 } from "recharts";
 
 // Hooks
-import useGlobalContext from "../../hooks/useGlobalContext";
+import useGlobalContext from "../../Hooks/useGlobalContext";
 
 // Functions
 import { toCurrency } from "../../functions/currency";

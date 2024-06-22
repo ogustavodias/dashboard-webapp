@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, createContext } from "react";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../Hooks/useFetch";
 import { getDate } from "../functions/date";
 
 export interface ISale {
