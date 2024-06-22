@@ -60,9 +60,9 @@ const Resume = () => {
   if (error) return <Error message={error} />;
   if (!data) return;
 
-  const sales = data.filter(({ status }) => status !== "falha");
-  const received = sales.filter(({ status }) => status === "pago");
-  const processing = sales.filter(({ status }) => status === "processando");
+  const sales = data.filter((item: ISale) => item.status !== "falha");
+  const received = sales.filter((item: ISale) => item.status === "pago");
+  const processing = sales.filter((item: ISale) => item.status === "processando");
 
   return (
     <div>
@@ -70,19 +70,19 @@ const Resume = () => {
         <S.ResumeCard>
           <h2>Vendas</h2>
           <span>
-            {toCurrency(sales?.reduce((acc, item) => item.preco + acc, 0))}
+            {toCurrency(sales?.reduce((acc: number, item: ISale) => item.preco + acc, 0))}
           </span>
         </S.ResumeCard>
         <S.ResumeCard>
           <h2>Recebido</h2>
           <span>
-            {toCurrency(received?.reduce((acc, item) => item.preco + acc, 0))}
+            {toCurrency(received?.reduce((acc: number, item: ISale) => item.preco + acc, 0))}
           </span>
         </S.ResumeCard>
         <S.ResumeCard>
           <h2>Processando</h2>
           <span>
-            {toCurrency(processing?.reduce((acc, item) => item.preco + acc, 0))}
+            {toCurrency(processing?.reduce((acc: number, item: ISale) => item.preco + acc, 0))}
           </span>
         </S.ResumeCard>
       </S.ResumeHeader>
