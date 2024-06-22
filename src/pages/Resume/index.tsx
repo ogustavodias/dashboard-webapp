@@ -22,6 +22,9 @@ import { toCurrency } from "../../functions/currency";
 import { Loading } from "../../components/Loading/styles";
 import Error from "../../components/Error";
 
+// Types and Interfaces
+import { ISale } from "../../context/global";
+
 interface IGraphData {
   name: string;
   pago: number;
@@ -29,22 +32,23 @@ interface IGraphData {
   falha: number;
 }
 
+interface keyAndValue {
+  [key: string]: IGraphData;
+}
+
 const Resume = () => {
   const { data, loading, error } = useGlobalContext();
 
   function dataToGraph(): IGraphData[] {
     if (data) {
-      const dataGraph = data.reduce(
-        (previous: { [key: string]: IGraphData }, now) => {
-          const date = now.data.split(" ")[0].substring(5);
-          if (!previous[date])
-            previous[date] = { name: date, pago: 0, processando: 0, falha: 0 };
+      const dataGraph = data.reduce((previous: keyAndValue, now: ISale) => {
+        const date = now.data.split(" ")[0].substring(5);
+        if (!previous[date])
+          previous[date] = { name: date, pago: 0, processando: 0, falha: 0 };
 
-          previous[date][now.status] += now.preco;
-          return previous;
-        },
-        {} as { [key: string]: IGraphData }
-      );
+        previous[date][now.status] += now.preco;
+        return previous;
+      }, {} as { [key: string]: IGraphData });
 
       return Object.values(dataGraph);
     }
